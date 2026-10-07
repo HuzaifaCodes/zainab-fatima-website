@@ -198,76 +198,7 @@ function App() {
         {renderPhase()}
       </AnimatePresence>
 
-      {/* Dev reset button — remove before deploy */}
-      {import.meta.env.DEV && (
-        <button
-          onClick={() => {
-            localStorage.removeItem("zf01_quest_state_v3");
-            localStorage.removeItem("zf01_sound_answered");
-            window.location.reload();
-          }}
-          style={{
-            position: "fixed",
-            top: "8px",
-            left: "8px",
-            zIndex: 9999,
-            background: "rgba(255,34,68,0.2)",
-            border: "1px solid var(--red)",
-            color: "var(--red)",
-            borderRadius: "4px",
-            padding: "4px 8px",
-            fontSize: "0.6rem",
-            fontFamily: "var(--font-mono)",
-            cursor: "pointer",
-            letterSpacing: "0.08em",
-          }}
-        >
-          [DEV] RESET
-        </button>
-      )}
-      {/* DEV: Skip to mission */}
-      {import.meta.env.DEV && (
-        <button
-          onClick={() => {
-            const missionState = {
-              phase: "mission",
-              currentMission: 0,
-              missionStartedAt: Date.now(),
-              bonusMs: 0,
-              daresCompleted: 0,
-              currentDare: null,
-              dareActive: false,
-              dareAccepted: false,
-              passwordAttempts: 0,
-              completedMissions: [],
-              activationPlayed: true,
-              soundEnabled: false,
-              questComplete: false,
-              finalStartedAt: null,
-            };
-            localStorage.setItem("zf01_quest_state_v3", JSON.stringify(missionState));
-            localStorage.setItem("zf01_sound_answered", "1");
-            window.location.reload();
-          }}
-          style={{
-            position: "fixed",
-            top: "8px",
-            left: "90px",
-            zIndex: 9999,
-            background: "rgba(45,138,255,0.2)",
-            border: "1px solid var(--blue-bright)",
-            color: "var(--blue-bright)",
-            borderRadius: "4px",
-            padding: "4px 8px",
-            fontSize: "0.6rem",
-            fontFamily: "var(--font-mono)",
-            cursor: "pointer",
-            letterSpacing: "0.08em",
-          }}
-        >
-          [DEV] → M1
-        </button>
-      )}
+
     </div>
   );
 }
